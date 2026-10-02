@@ -1,0 +1,67 @@
+{
+  "name": "@nuxtjp/declarative-ui",
+  "version": "0.10.0",
+  "description": "Product-independent declarative interaction and exact Nuxt SSR snapshots",
+  "type": "module",
+  "license": "Apache-2.0",
+  "packageManager": "pnpm@10.29.3",
+  "engines": {
+    "node": "^22.0.0 || ^24.0.0",
+    "pnpm": ">=10 <11"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md",
+    "NOTICE",
+    "LICENSE-PREVIOUS"
+  ],
+  "main": "./dist/module.js",
+  "types": "./dist/module.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/module.d.ts",
+      "import": "./dist/module.js"
+    },
+    "./interaction": {
+      "types": "./dist/runtime/shared/interaction.d.ts",
+      "import": "./dist/runtime/shared/interaction.js"
+    },
+    "./owner-input": "./dist/runtime/app/components/OwnerInput.vue"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "vue-tsc --noEmit --project tsconfig.json",
+    "test": "vitest run",
+    "prepack": "pnpm run test && pnpm run typecheck && pnpm run build"
+  },
+  "peerDependencies": {
+    "@nuxt/ui": "^4.10.0",
+    "nuxt": "^4.5.0",
+    "vue": "^3.5.0"
+  },
+  "dependencies": {
+    "@crowsi/interaction-transport": "file:../../../../../../../.artifacts/npm/2b3a88bd49fb4f56f54d4475b66a0ba10ed3970305872a69d0560600e31c217a/crowsi-interaction-transport-0.10.0.tgz",
+    "@zixcel/interaction": "file:../../../../../../../.artifacts/npm/1c2d6e15a4212e2459887589f3e79781a9902f0ebbf44f12dc76bd75e82efa66/zixcel-interaction-0.10.0.tgz",
+    "@nuxt/kit": "4.5.0",
+    "@nuxt/schema": "4.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.12.0",
+    "nuxt": "4.5.0",
+    "typescript": "5.9.3",
+    "vitest": "4.1.6",
+    "vue": "3.5.39",
+    "vue-tsc": "3.2.8"
+  },
+  "pnpm": {
+    "overrides": {
+      "archiver-utils@5.0.2>glob": "13.0.6"
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}
